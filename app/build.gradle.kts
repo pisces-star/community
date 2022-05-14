@@ -31,14 +31,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR = true
     }
     buildFeatures {
         compose =  true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.0"
-        kotlinCompilerVersion =  "1.5.10"
+        kotlinCompilerExtensionVersion = "1.2.0-alpha08"
     }
     packagingOptions {
         resources {
@@ -55,8 +53,14 @@ dependencies {
     implementation (libs.compose.ui)
     implementation (libs.compose.material)
     implementation (libs.compose.preview)
-    implementation (libs.lifecycle.runtime)
+    implementation (libs.lifecycle.viewmodel)
     implementation (libs.activity.compose)
+    implementation(libs.timber)
+    implementation(libs.coil)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+    implementation(libs.retrofit)
+    implementation(libs.koin)
     testImplementation (libs.junit)
     androidTestImplementation (libs.test.ext)
     androidTestImplementation (libs.test.espresso)

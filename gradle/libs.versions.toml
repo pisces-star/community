@@ -2,27 +2,39 @@
 androidx-core = "1.3.2"
 androidx-appcompat = "1.2.0"
 material = "1.3.0"
-compose = "1.0.0"
+compose = "1.2.0-alpha08"
 activity-compose = "1.3.0"
-lifecycle-runtime = "2.3.1"
-test-ext = "1.1.2"
+lifecycle-viewmodel = "2.4.1"
+test-ext = "1.1.3"
 test-espresso = "3.3.0"
 junit = "4.13.2"
+retrofit = "2.9.0"
+coil = "2.0.0"
+koin = "3.2.0"
+coroutines = "1.6.1"
+timber = "5.0.1"
 
 [libraries]
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
-compose-ui = { module = "androidx.compose.ui:ui",version.ref = "compose" }
-compose-material = { module = "androidx.compose.material:material",version.ref = "compose" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx",version.ref = "lifecycle-runtime" }
-compose-preview = { module = "androidx.compose.ui:ui-tooling-preview",version.ref = "compose" }
-compose-test = { module = "androidx.compose.ui:ui-test-junit4",version.ref = "compose" }
-compose-tool = { module = "androidx.compose.ui:ui-tooling",version.ref = "compose" }
-junit = { module = "junit:junit",version.ref = "junit"}
-test-ext = { module = "androidx.test.ext:junit",version.ref = "test-ext" }
-test-espresso = { module = "androidx.test.espresso:espresso-core",version.ref = "test-espresso"}
+lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel" }
+
+compose-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+compose-test = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
+compose-tool = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+junit = { module = "junit:junit", version.ref = "junit" }
+test-ext = { module = "androidx.test.ext:junit", version.ref = "test-ext" }
+test-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "test-espresso" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 
 [bundles]
