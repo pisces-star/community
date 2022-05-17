@@ -13,6 +13,8 @@ koin = "3.2.0"
 coroutines = "1.6.1"
 timber = "5.0.1"
 drouter = "2.3.0"
+kotlin-serialization = "1.3.3"
+serialization-converter = "0.8.0"
 
 [libraries]
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
@@ -33,7 +35,8 @@ coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", ve
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 drouter = { module = "io.github.didi:drouter-api", version.ref = "drouter" }
-
+serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "serialization-converter" }
+kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
 
 [bundles]
 

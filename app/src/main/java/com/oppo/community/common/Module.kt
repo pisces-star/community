@@ -1,10 +1,13 @@
 package com.oppo.community.common
 
-import com.oppo.community.data.FriendRepository
-import com.oppo.community.data.FriendRepositoryImpl
-import com.oppo.community.domain.FetchFriendsUseCase
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.oppo.community.data.SeaCreatureRepository
+import com.oppo.community.data.SeaCreatureRepositoryImpl
+import com.oppo.community.domain.FetchSeaCreaturesUseCase
 import com.oppo.community.ui.home.HomeViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -19,15 +22,23 @@ val module = module {
     single { provideOkhttpClient() }
     factory { provideRetrofit(get()) }
     single { provideBusinessService(get()) }
-    single<FriendRepository> { FriendRepositoryImpl(get()) }
-    factory { FetchFriendsUseCase(get(), get(named("IoDispatcher"))) }
+    single<SeaCreatureRepository> { SeaCreatureRepositoryImpl(get()) }
+    factory { FetchSeaCreaturesUseCase(get(), get(named("IoDispatcher"))) }
     viewModel { HomeViewModel(get()) }
 }
 
-
+const val BASE_URL = "https://acnhapi.com/v1/"
 fun provideOkhttpClient(): OkHttpClient = OkHttpClient.Builder().build()
 
-fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder().client(okHttpClient).baseUrl("").build()
+fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    val contentType = "application/json".toMediaType()
+    return Retrofit.Builder()
+        .client(okHttpClient)
+        .baseUrl(BASE_URL)
+        .addConverterFactory(Json.asConverterFactory(contentType))
+        .build()
+}
 
-fun provideBusinessService(retrofit: Retrofit): BusinessService = retrofit.create(BusinessService::class.java)
+
+fun provideBusinessService(retrofit: Retrofit): CommunityService = retrofit.create(CommunityService::class.java)
 

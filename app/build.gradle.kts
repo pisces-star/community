@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("com.didi.drouter")
+    kotlin("plugin.serialization") version "1.6.21"
 }
 
 android {
@@ -57,6 +58,8 @@ dependencies {
     implementation(libs.koin)
     implementation(libs.androidx.legacy)
     implementation(libs.drouter)
+    implementation(libs.kotlin.serialization)
+    implementation(libs.serialization.converter)
     testImplementation(libs.junit)
     androidTestImplementation(libs.test.ext)
     androidTestImplementation(libs.test.espresso)
