@@ -1,16 +1,17 @@
 plugins {
-    id ("com.android.application")
-    id ("kotlin-android")
+    id("com.android.application")
+    id("kotlin-android")
+    id("com.didi.drouter")
 }
 
 android {
-    compileSdk =  32
+    compileSdk = 32
 
     defaultConfig {
-        applicationId =  "com.pisces.business"
-        minSdk  = 26
-        targetSdk =  32
-        versionCode =  1
+        applicationId = "com.oppo.community"
+        minSdk = 26
+        targetSdk = 32
+        versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -21,40 +22,32 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled =  false
-            proguardFiles (getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
-        sourceCompatibility  = JavaVersion.VERSION_1_8
-        targetCompatibility  = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        compose =  true
+        viewBinding = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0-alpha08"
-    }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
+}
+
+drouter {
+    debug = true
 }
 
 dependencies {
 
-    implementation (libs.androidx.core)
-    implementation (libs.androidx.appcompat)
-    implementation (libs.material)
-    implementation (libs.compose.ui)
-    implementation (libs.compose.material)
-    implementation (libs.compose.preview)
-    implementation (libs.lifecycle.viewmodel)
-    implementation (libs.activity.compose)
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.lifecycle.viewmodel)
     implementation(libs.timber)
     implementation(libs.coil)
     implementation(libs.coroutines.core)
@@ -62,10 +55,9 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.lifecycle.runtime)
     implementation(libs.koin)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    testImplementation (libs.junit)
-    androidTestImplementation (libs.test.ext)
-    androidTestImplementation (libs.test.espresso)
-    androidTestImplementation (libs.compose.test)
-    debugImplementation (libs.compose.tool)
+    implementation(libs.androidx.legacy)
+    implementation(libs.drouter)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.test.ext)
+    androidTestImplementation(libs.test.espresso)
 }
