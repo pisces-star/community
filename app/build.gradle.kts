@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("com.didi.drouter")
     kotlin("plugin.serialization") version "1.6.21"
+    kotlin("kapt")
 }
 
 android {
@@ -60,6 +61,11 @@ dependencies {
     implementation(libs.drouter)
     implementation(libs.kotlin.serialization)
     implementation(libs.serialization.converter)
+    implementation(libs.stetho.okhttp)
+    implementation(libs.okhttp.logging)
+    implementation(libs.room.ktx)
+    implementation(libs.androidx.datastore)
+    kapt(libs.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.test.ext)
     androidTestImplementation(libs.test.espresso)
