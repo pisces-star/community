@@ -1,9 +1,6 @@
-package com.oppo.community.common
+package com.oppo.community.core.common.extension
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import androidx.datastore.preferences.SharedPreferencesMigration
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -32,15 +29,3 @@ inline fun AppCompatActivity.launchAndRepeatWithViewLifecycle(
         }
     }
 }
-
-val Context.dataStore by preferencesDataStore(
-    name = PREFS_NAME,
-    produceMigrations = { context ->
-        listOf(
-            SharedPreferencesMigration(
-                context,
-                PREFS_NAME
-            )
-        )
-    }
-)

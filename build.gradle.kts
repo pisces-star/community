@@ -1,8 +1,19 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id 'com.android.application' version '7.2.1' apply false
-    id 'com.android.library' version '7.2.1' apply false
-    id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
+    alias(libs.plugins.com.android.application) apply false
+    alias(libs.plugins.com.android.library) apply false
+    alias(libs.plugins.org.jetbrains.kotlin.android) apply false
+    alias(libs.plugins.com.github.ben.manes.versions)
+    alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization) apply false
+    alias(libs.plugins.nl.littlerobots.version.catalog.update)
+}
+
+buildscript {
+    dependencies {
+        classpath(libs.io.github.didi.drouter.plugin.proxy)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
+    }
 }
 
 tasks.register("clean", Delete::class) {
