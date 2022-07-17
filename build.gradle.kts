@@ -12,7 +12,6 @@ plugins {
 buildscript {
     dependencies {
         classpath(libs.io.github.didi.drouter.plugin.proxy)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
     }
 }
 

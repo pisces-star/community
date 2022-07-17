@@ -1,5 +1,6 @@
 package com.oppo.community.common
 
+import com.oppo.community.core.common.network.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
