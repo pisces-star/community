@@ -5,19 +5,26 @@ import com.oppo.community.core.common.base.BaseResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import timber.log.Timber
 
 
 sealed class Result<out R> {
 
     data class Success<out T>(val data: T) : Result<T>()
     data class Error(val exception: Throwable) : Result<Nothing>()
+    data class Fail(val message: String?) : Result<Nothing>()
     object Loading : Result<Nothing>()
+    object NoNetwork : Result<Nothing>()
+    object Empty : Result<Nothing>()
 
     override fun toString(): String {
         return when (this) {
             is Success<*> -> "Success[data=$data]"
             is Error -> "Error[exception=$exception]"
+            is Fail -> "Fail[message=$message]"
             Loading -> "Loading"
+            Empty -> "Empty"
+            NoNetwork -> "NoNetwork"
         }
     }
 }
@@ -50,9 +57,19 @@ inline fun <reified T> Result<T>.updateOnSuccess(stateFlow: MutableStateFlow<T>)
 fun <T> Flow<BaseResponse<T>>.asResult(coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<Result<T>> {
     return this
         .map {
-            if (it.succeeded) Result.Success(it.data) else Result.Error(Exception(it.msg))
+            if (it.succeeded) {
+                val data = it.data
+                if (data == null || (data is List<*> && data.isEmpty())) {
+                    Result.Empty
+                } else {
+                    Result.Success(it.data)
+                }
+            } else Result.Fail(it.msg)
         }
         .onStart { emit(Result.Loading) }
-        .catch { emit(Result.Error(it)) }
+        .catch {
+            Timber.e(it)
+            emit(Result.Error(it))
+        }
         .flowOn(coroutineDispatcher)
 }

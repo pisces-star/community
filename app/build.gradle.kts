@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.com.jakewharton.serialization.converter)
     implementation(libs.com.facebook.stetho)
     implementation(libs.com.squareup.retrofit2)
+    implementation(libs.com.github.cymchad.brvah)
     implementation(libs.com.squareup.okhttp3.logging.interceptor)
     implementation(libs.com.google.android.material)
     implementation(libs.jp.wasabeef.transformers.coil)

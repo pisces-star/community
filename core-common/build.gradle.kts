@@ -33,6 +33,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -43,10 +44,11 @@ dependencies {
     implementation(libs.androidx.datastore)
     implementation(libs.androidx.appcompat)
     implementation(libs.com.facebook.stetho)
+    implementation(libs.androidx.recyclerview)
     implementation(libs.com.jakewharton.timber)
     implementation(libs.com.squareup.retrofit2)
-    implementation(libs.com.github.viewbinding.ktx)
-    implementation(libs.com.github.viewbinding.base)
+    implementation(libs.com.google.android.material)
+    implementation(libs.com.github.statelayout)
     implementation(libs.jp.wasabeef.transformers.coil)
     implementation(libs.androidx.activity.activity.ktx)
     implementation(libs.com.jakewharton.serialization.converter)

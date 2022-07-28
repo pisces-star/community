@@ -103,6 +103,7 @@ com-github-viewbinding-base = { module = "com.github.DylanCaiCoding.ViewBindingK
 com-github-viewbinding-brvah = { module = "com.github.DylanCaiCoding.ViewBindingKTX:viewbinding-brvah", version.ref = "viewbinding-ktx" }
 com-github-cymchad-brvah = "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.7"
 com-github-autosize = "com.github.JessYanCoding:AndroidAutoSize:v1.2.1"
+com-github-statelayout = "com.github.liangjingkanji:StateLayout:1.3.8"
 junit = "junit:junit:4.13.2"
 jp-wasabeef-transformers-coil = "jp.wasabeef.transformers:coil:1.0.6"
 org-apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:2.17.0"
