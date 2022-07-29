@@ -10,16 +10,27 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 
-fun FragmentActivity.FragmentStateAdapter(vararg fragments: Fragment, isLazyLoading: Boolean = false): FragmentStateAdapter =
+fun FragmentActivity.FragmentStateAdapter(
+    vararg fragments: Fragment,
+    isLazyLoading: Boolean = false
+): FragmentStateAdapter =
     FragmentStateAdapter(fragments.size, isLazyLoading) { fragments[it] }
 
 fun Fragment.FragmentStateAdapter(vararg fragments: Fragment, isLazyLoading: Boolean = false): FragmentStateAdapter =
     FragmentStateAdapter(fragments.size, isLazyLoading) { fragments[it] }
 
-fun FragmentActivity.FragmentStateAdapter(itemCount: Int, isLazyLoading: Boolean = false, block: (Int) -> Fragment): FragmentStateAdapter =
+fun FragmentActivity.FragmentStateAdapter(
+    itemCount: Int,
+    isLazyLoading: Boolean = false,
+    block: (Int) -> Fragment
+): FragmentStateAdapter =
     FragmentStateAdapter(supportFragmentManager, lifecycle, itemCount, isLazyLoading, block)
 
-fun Fragment.FragmentStateAdapter(itemCount: Int, isLazyLoading: Boolean = false, block: (Int) -> Fragment): FragmentStateAdapter =
+fun Fragment.FragmentStateAdapter(
+    itemCount: Int,
+    isLazyLoading: Boolean = false,
+    block: (Int) -> Fragment
+): FragmentStateAdapter =
     FragmentStateAdapter(childFragmentManager, lifecycle, itemCount, isLazyLoading, block)
 
 fun FragmentStateAdapter(

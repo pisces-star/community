@@ -1,4 +1,3 @@
-
 @file:Suppress("unused")
 
 package com.oppo.community.core.common.utils

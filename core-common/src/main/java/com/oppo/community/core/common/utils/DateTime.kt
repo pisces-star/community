@@ -102,7 +102,8 @@ fun LocalDateTime.firstInMonth(dayOfWeek: DayOfWeek): LocalDateTime = with(Tempo
 
 fun LocalDateTime.lastInMonth(dayOfWeek: DayOfWeek): LocalDateTime = with(TemporalAdjusters.lastInMonth(dayOfWeek))
 
-fun LocalDateTime.dayOfWeekInMonth(ordinal: Int, dayOfWeek: DayOfWeek): LocalDateTime = with(TemporalAdjusters.dayOfWeekInMonth(ordinal, dayOfWeek))
+fun LocalDateTime.dayOfWeekInMonth(ordinal: Int, dayOfWeek: DayOfWeek): LocalDateTime =
+    with(TemporalAdjusters.dayOfWeekInMonth(ordinal, dayOfWeek))
 
 fun LocalDateTime.next(dayOfWeek: DayOfWeek): LocalDateTime = with(TemporalAdjusters.next(dayOfWeek))
 
@@ -110,7 +111,8 @@ fun LocalDateTime.nextOrSame(dayOfWeek: DayOfWeek): LocalDateTime = with(Tempora
 
 fun LocalDateTime.previous(dayOfWeek: DayOfWeek): LocalDateTime = with(TemporalAdjusters.previous(dayOfWeek))
 
-fun LocalDateTime.previousOrSame(dayOfWeek: DayOfWeek): LocalDateTime = with(TemporalAdjusters.previousOrSame(dayOfWeek))
+fun LocalDateTime.previousOrSame(dayOfWeek: DayOfWeek): LocalDateTime =
+    with(TemporalAdjusters.previousOrSame(dayOfWeek))
 
 fun LocalDate.firstDayOfYear(): LocalDate = with(TemporalAdjusters.firstDayOfYear())
 
@@ -132,7 +134,8 @@ fun LocalDate.firstInMonth(dayOfWeek: DayOfWeek): LocalDate = with(TemporalAdjus
 
 fun LocalDate.lastInMonth(dayOfWeek: DayOfWeek): LocalDate = with(TemporalAdjusters.lastInMonth(dayOfWeek))
 
-fun LocalDate.dayOfWeekInMonth(ordinal: Int, dayOfWeek: DayOfWeek): LocalDate = with(TemporalAdjusters.dayOfWeekInMonth(ordinal, dayOfWeek))
+fun LocalDate.dayOfWeekInMonth(ordinal: Int, dayOfWeek: DayOfWeek): LocalDate =
+    with(TemporalAdjusters.dayOfWeekInMonth(ordinal, dayOfWeek))
 
 fun LocalDate.next(dayOfWeek: DayOfWeek): LocalDate = with(TemporalAdjusters.next(dayOfWeek))
 

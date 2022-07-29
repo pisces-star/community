@@ -14,10 +14,9 @@ fun ActivityResultCaller.registerForLaunchAppSettingsResult(callback: ActivityRe
     registerForActivityResult(LaunchAppSettingsContract(), callback)
 
 class LaunchAppSettingsContract : ActivityResultContract<Unit, Unit>() {
-    override fun createIntent(context: Context, input: Unit): Intent =
+    override fun createIntent(context: Context, input: Unit) =
         Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
             .setData(Uri.fromParts("package", context.packageName, null))
-
 
     override fun parseResult(resultCode: Int, intent: Intent?) = Unit
 }

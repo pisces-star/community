@@ -30,8 +30,12 @@ fun ActivityResultCaller.registerForRequestPermissionResult(
         permission = it.first
         when {
             it.second -> onGranted()
-            !permission.isNullOrEmpty() && ActivityCompat.shouldShowRequestPermissionRationale(topActivity, permission!!) ->
+            !permission.isNullOrEmpty() && ActivityCompat.shouldShowRequestPermissionRationale(
+                topActivity,
+                permission!!
+            ) ->
                 onShowRequestRationale(PermissionScope { permissionLauncher?.launch(permission) })
+
             else -> onDenied(AppSettingsScope { launchAppSettingsLauncher.launch() })
         }
     }

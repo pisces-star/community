@@ -1,4 +1,3 @@
-
 @file:Suppress("unused", "UNCHECKED_CAST")
 
 package com.oppo.community.core.common.utils
@@ -6,6 +5,7 @@ package com.oppo.community.core.common.utils
 import androidx.annotation.StringRes
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import com.oppo.community.core.common.utils.pressBackTwiceToExitApp
 
 fun <T : Fragment> T.withArguments(vararg pairs: Pair<String, *>) = apply {
     arguments = bundleOf(*pairs)

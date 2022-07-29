@@ -23,10 +23,10 @@ fun File.isExistOrCreateNewFile(): Boolean =
     }
 
 fun File?.isExistOrCreateNewDir(): Boolean =
-    when{
-        this == null ->false
+    when {
+        this == null -> false
         exists() -> isDirectory
-        else ->mkdir()
+        else -> mkdir()
     }
 
 fun File.createNewFileAfterDeleteExist(): Boolean =

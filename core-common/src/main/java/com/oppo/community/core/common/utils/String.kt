@@ -1,4 +1,3 @@
-
 @file:Suppress("unused")
 
 package com.oppo.community.core.common.utils
@@ -75,10 +74,20 @@ fun String.isJson(): Boolean =
         false
     }
 
-fun Float.toNumberString(fractionDigits: Int = 2, minIntDigits: Int = 1, isGrouping: Boolean = false, isHalfUp: Boolean = true): String =
+fun Float.toNumberString(
+    fractionDigits: Int = 2,
+    minIntDigits: Int = 1,
+    isGrouping: Boolean = false,
+    isHalfUp: Boolean = true
+): String =
     toDouble().toNumberString(fractionDigits, minIntDigits, isGrouping, isHalfUp)
 
-fun Double.toNumberString(fractionDigits: Int = 2, minIntDigits: Int = 1, isGrouping: Boolean = false, isHalfUp: Boolean = true): String =
+fun Double.toNumberString(
+    fractionDigits: Int = 2,
+    minIntDigits: Int = 1,
+    isGrouping: Boolean = false,
+    isHalfUp: Boolean = true
+): String =
     (NumberFormat.getInstance() as DecimalFormat).apply {
         isGroupingUsed = isGrouping
         roundingMode = if (isHalfUp) RoundingMode.HALF_UP else RoundingMode.DOWN

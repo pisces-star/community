@@ -1,4 +1,3 @@
-
 @file:Suppress("unused")
 
 package com.oppo.community.core.common.utils.activityresult
@@ -14,8 +13,7 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.IntDef
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.os.bundleOf
-import com.oppo.community.core.common.utils.intentOf
-import com.oppo.community.core.common.utils.topActivity
+import com.oppo.community.core.common.utils.*
 import java.io.File
 
 fun ActivityResultLauncher<Unit>.launch(options: ActivityOptionsCompat? = null) = launch(Unit, options)
@@ -61,7 +59,8 @@ class MediaUriResultLauncher(launcher: ActivityResultLauncher<String>) : DecorAc
     fun launchForVideo() = launch("video/*")
 }
 
-abstract class DecorActivityResultLauncher<T>(private val launcher: ActivityResultLauncher<T>) : ActivityResultLauncher<T>() {
+abstract class DecorActivityResultLauncher<T>(private val launcher: ActivityResultLauncher<T>) :
+    ActivityResultLauncher<T>() {
 
     override fun launch(input: T?, options: ActivityOptionsCompat?) = launcher.launch(input, options)
 

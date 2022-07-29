@@ -372,28 +372,28 @@ interface AlertBuilder<out D : DialogInterface> {
     val context: Context
 
     var title: CharSequence
-        @Deprecated("Property does not have a getter", level = ERROR) get
+        @Deprecated(NO_GETTER, level = ERROR) get
     var titleResource: Int
-        @Deprecated("Property does not have a getter", level = ERROR) get
+        @Deprecated(NO_GETTER, level = ERROR) get
 
     var message: CharSequence
-        @Deprecated("Property does not have a getter", level = ERROR) get
+        @Deprecated(NO_GETTER, level = ERROR) get
     var messageResource: Int
-        @Deprecated("Property does not have a getter", level = ERROR) get
+        @Deprecated(NO_GETTER, level = ERROR) get
 
     var icon: Drawable
-        @Deprecated("Property does not have a getter", level = ERROR) get
+        @Deprecated(NO_GETTER, level = ERROR) get
     var iconResource: Int
-        @Deprecated("Property does not have a getter", level = ERROR) get
+        @Deprecated(NO_GETTER, level = ERROR) get
 
     var customTitle: View
-        @Deprecated("Property does not have a getter", level = ERROR) get
+        @Deprecated(NO_GETTER, level = ERROR) get
 
     var customView: View
-        @Deprecated("Property does not have a getter", level = ERROR) get
+        @Deprecated(NO_GETTER, level = ERROR) get
 
     var isCancelable: Boolean
-        @Deprecated("Property does not have a getter", level = ERROR) get
+        @Deprecated(NO_GETTER, level = ERROR) get
 
     fun onCancelled(handler: (DialogInterface) -> Unit)
 
@@ -432,64 +432,64 @@ abstract class AlertDialogBuilder : AlertBuilder<AlertDialog> {
     override val context get() = builder.context
 
     override var title: CharSequence
-        @Deprecated("Property does not have a getter", level = ERROR)
-        get() = throw NotImplementedError("Property does not have a getter")
+        @Deprecated(NO_GETTER, level = ERROR)
+        get() = noGetter()
         set(value) {
             builder.setTitle(value)
         }
 
     override var titleResource: Int
-        @Deprecated("Property does not have a getter", level = ERROR)
-        get() = throw NotImplementedError("Property does not have a getter")
+        @Deprecated(NO_GETTER, level = ERROR)
+        get() = noGetter()
         set(value) {
             builder.setTitle(value)
         }
 
     override var message: CharSequence
-        @Deprecated("Property does not have a getter", level = ERROR)
-        get() = throw NotImplementedError("Property does not have a getter")
+        @Deprecated(NO_GETTER, level = ERROR)
+        get() = noGetter()
         set(value) {
             builder.setMessage(value)
         }
 
     override var messageResource: Int
-        @Deprecated("Property does not have a getter", level = ERROR)
-        get() = throw NotImplementedError("Property does not have a getter")
+        @Deprecated(NO_GETTER, level = ERROR)
+        get() = noGetter()
         set(value) {
             builder.setMessage(value)
         }
 
     override var icon: Drawable
-        @Deprecated("Property does not have a getter", level = ERROR)
-        get() = throw NotImplementedError("Property does not have a getter")
+        @Deprecated(NO_GETTER, level = ERROR)
+        get() = noGetter()
         set(value) {
             builder.setIcon(value)
         }
 
     override var iconResource: Int
-        @Deprecated("Property does not have a getter", level = ERROR)
-        get() = throw NotImplementedError("Property does not have a getter")
+        @Deprecated(NO_GETTER, level = ERROR)
+        get() = noGetter()
         set(value) {
             builder.setIcon(value)
         }
 
     override var customTitle: View
-        @Deprecated("Property does not have a getter", level = ERROR)
-        get() = throw NotImplementedError("Property does not have a getter")
+        @Deprecated(NO_GETTER, level = ERROR)
+        get() = noGetter()
         set(value) {
             builder.setCustomTitle(value)
         }
 
     override var customView: View
-        @Deprecated("Property does not have a getter", level = ERROR)
-        get() = throw NotImplementedError("Property does not have a getter")
+        @Deprecated(NO_GETTER, level = ERROR)
+        get() = noGetter()
         set(value) {
             builder.setView(value)
         }
 
     override var isCancelable: Boolean
-        @Deprecated("Property does not have a getter", level = ERROR)
-        get() = throw NotImplementedError("Property does not have a getter")
+        @Deprecated(NO_GETTER, level = ERROR)
+        get() = noGetter()
         set(value) {
             builder.setCancelable(value)
         }

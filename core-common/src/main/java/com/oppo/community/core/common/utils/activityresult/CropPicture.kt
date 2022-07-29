@@ -14,7 +14,7 @@ import com.oppo.community.core.common.utils.contentResolver
 import com.oppo.community.core.common.utils.grantReadUriPermission
 import com.oppo.community.core.common.utils.insertMediaImage
 
-fun ActivityResultCaller.registerForCropPictureResult(callback: ActivityResultCallback<Uri>) =
+fun ActivityResultCaller.registerForCropPictureResult(callback: ActivityResultCallback<Uri?>) =
     registerForActivityResult(CropPictureContract(), callback)
 
 class CropPictureRequest constructor(
@@ -23,7 +23,7 @@ class CropPictureRequest constructor(
     val extras: Bundle = Bundle()
 )
 
-open class CropPictureContract : ActivityResultContract<CropPictureRequest, Uri>() {
+open class CropPictureContract : ActivityResultContract<CropPictureRequest, Uri?>() {
     private var outputUri: Uri? = null
 
     @CallSuper
@@ -38,5 +38,5 @@ open class CropPictureContract : ActivityResultContract<CropPictureRequest, Uri>
             .grantReadUriPermission()
     }
 
-    override fun parseResult(resultCode: Int, intent: Intent?): Uri = outputUri?:
+    override fun parseResult(resultCode: Int, intent: Intent?) = outputUri
 }

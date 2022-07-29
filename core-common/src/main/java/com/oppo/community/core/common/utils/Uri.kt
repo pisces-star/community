@@ -1,4 +1,3 @@
-
 @file:Suppress("unused")
 
 package com.oppo.community.core.common.utils
@@ -19,7 +18,6 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
-import androidx.datastore.preferences.protobuf.ExperimentalApi
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
@@ -53,6 +51,27 @@ fun Uri.update(vararg pairs: Pair<String, Any?>): Boolean =
         selectionArgs = arrayOf(ContentUris.parseId(this).toString())
     ) > 0
 
+@ExperimentalApi
+fun Uri.delete(launcher: ActivityResultLauncher<IntentSenderRequest>): Boolean =
+    @Suppress("DEPRECATION")
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+        val projection = arrayOf(MediaStore.MediaColumns.DATA)
+        contentResolver.queryFirst(this, projection) { cursor ->
+            File(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA))).delete()
+        } ?: false
+    } else {
+        try {
+            val id: Long = ContentUris.parseId(this)
+            contentResolver.delete(this, "${BaseColumns._ID} = ?", arrayOf(id.toString())) > 0
+        } catch (securityException: SecurityException) {
+            val recoverableSecurityException = securityException as? RecoverableSecurityException
+                ?: throw RuntimeException(securityException.message, securityException)
+            val intentSender =
+                recoverableSecurityException.userAction.actionIntent.intentSender
+            launcher.launch(IntentSenderRequest.Builder(intentSender).build())
+            false
+        }
+    }
 
 inline fun <R> Uri.openFileDescriptor(mode: String = "r", crossinline block: (ParcelFileDescriptor) -> R): R? =
     contentResolver.openFileDescriptor(this, mode)?.use(block)

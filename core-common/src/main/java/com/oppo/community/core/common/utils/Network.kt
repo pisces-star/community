@@ -74,6 +74,7 @@ class NetworkAvailableLiveData @RequiresPermission(ACCESS_NETWORK_STATE) constru
         when {
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.N ->
                 connectivityManager?.registerDefaultNetworkCallback(networkCallback)
+
             else ->
                 connectivityManager?.registerNetworkCallback(networkRequest, networkCallback)
         }
@@ -119,7 +120,8 @@ class NetworkAvailableLiveData @RequiresPermission(ACCESS_NETWORK_STATE) constru
     }
 }
 
-class WifiListLiveData @RequiresPermission(allOf = [ACCESS_WIFI_STATE, CHANGE_WIFI_STATE]) constructor() : LiveData<List<ScanResult>?>() {
+class WifiListLiveData @RequiresPermission(allOf = [ACCESS_WIFI_STATE, CHANGE_WIFI_STATE]) constructor() :
+    LiveData<List<ScanResult>?>() {
 
     private val wifiManager: WifiManager by lazy(LazyThreadSafetyMode.NONE) {
         application.getSystemService(Context.WIFI_SERVICE) as WifiManager

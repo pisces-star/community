@@ -139,13 +139,12 @@ fun Context.asActivity(): Activity? =
     this as? Activity ?: (this as? ContextWrapper)?.baseContext?.asActivity()
 
 var Activity.decorFitsSystemWindows: Boolean
-    @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-    get() = throw NotImplementedError("Property does not have a getter")
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = noGetter()
     set(value) = WindowCompat.setDecorFitsSystemWindows(window, value)
 
 inline val Activity.contentView: View
     get() = (findViewById<View>(android.R.id.content) as ViewGroup).getChildAt(0)
-
 
 inline val Context.context: Context get() = this
 

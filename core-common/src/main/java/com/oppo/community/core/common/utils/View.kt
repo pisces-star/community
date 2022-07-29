@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.oppo.community.core.common.R
+import com.oppo.community.core.common.utils.activity
 import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
@@ -91,7 +92,8 @@ fun View.expandClickArea(top: Int, left: Int, right: Int, bottom: Int) {
 }
 
 var View.roundCorners: Float
-    get() = throw NotImplementedError("Property does not have a getter")
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = noGetter()
     set(value) {
         clipToOutline = true
         outlineProvider = object : ViewOutlineProvider() {
@@ -191,6 +193,7 @@ class MultiTouchDelegate(bound: Rect, delegateView: View) : TouchDelegate(bound,
             MotionEvent.ACTION_DOWN -> {
                 targetDelegate = map.entries.find { it.value.first.contains(x, y) }?.value?.second
             }
+
             MotionEvent.ACTION_CANCEL -> {
                 targetDelegate = null
             }
