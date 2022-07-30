@@ -14,7 +14,6 @@ sealed class Result<out R> {
     data class Error(val exception: Throwable) : Result<Nothing>()
     data class Fail(val message: String?) : Result<Nothing>()
     object Loading : Result<Nothing>()
-    object NoNetwork : Result<Nothing>()
     object Empty : Result<Nothing>()
 
     override fun toString(): String {
@@ -24,7 +23,6 @@ sealed class Result<out R> {
             is Fail -> "Fail[message=$message]"
             Loading -> "Loading"
             Empty -> "Empty"
-            NoNetwork -> "NoNetwork"
         }
     }
 }

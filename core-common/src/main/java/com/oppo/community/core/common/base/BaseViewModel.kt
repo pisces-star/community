@@ -3,10 +3,12 @@ package com.oppo.community.core.common.base
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel<Event : UiEvent, State : UiState, Effect : UiEffect> : ViewModel() {
+abstract class BaseViewModel<State : UiState, Effect : UiEffect> : ViewModel() {
 
     /**
      * 初始状态
@@ -24,11 +26,6 @@ abstract class BaseViewModel<Event : UiEvent, State : UiState, Effect : UiEffect
     private val _uiState: MutableStateFlow<State> = MutableStateFlow(initialState)
     val uiState = _uiState.asStateFlow()
 
-    /**
-     * event包含用户与ui的交互（如点击操作），也有来自后台的消息
-     */
-    private val _event: MutableSharedFlow<Event> = MutableSharedFlow()
-    private val event = _event.asSharedFlow()
 
     /**
      * effect用作 事件带来的副作用，通常是 一次性事件 且 一对一的订阅关系
@@ -37,35 +34,6 @@ abstract class BaseViewModel<Event : UiEvent, State : UiState, Effect : UiEffect
     private val _effect: Channel<Effect> = Channel()
     val effect = _effect.receiveAsFlow()
 
-
-    init {
-        subscribeEvents()
-    }
-
-    /**
-     * Start listening to Event
-     */
-    private fun subscribeEvents() {
-        viewModelScope.launch {
-            event.collect {
-                handleEvent(it)
-            }
-        }
-    }
-
-    /**
-     * Handle each event
-     */
-    abstract fun handleEvent(event: Event)
-
-
-    /**
-     * Set new Event
-     */
-    fun setEvent(event: Event) {
-        val newEvent = event
-        viewModelScope.launch { _event.emit(newEvent) }
-    }
 
 
     /**

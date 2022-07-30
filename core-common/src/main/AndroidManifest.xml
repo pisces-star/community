@@ -12,7 +12,7 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.oppo.community.core.common.utils.AppInitializer"
+                android:name="com.oppo.community.core.common.utils.UtilsInitializer"
                 android:value="androidx.startup" />
         </provider>
     </application>

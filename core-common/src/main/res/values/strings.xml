@@ -1,0 +1,4 @@
+<resources>
+    <string name="base_empty_hint">搜索结果为空</string>
+    <string name="base_error_hint">网络请求异常，请重试</string>
+</resources>

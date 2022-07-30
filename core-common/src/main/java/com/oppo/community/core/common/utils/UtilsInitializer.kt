@@ -6,7 +6,7 @@ import android.app.Application
 import android.content.Context
 import androidx.startup.Initializer
 
-internal class AppInitializer : Initializer<Unit> {
+internal class UtilsInitializer : Initializer<Unit> {
 
     override fun create(context: Context) {
         application = context as Application
